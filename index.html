@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أوريجين ستيك هاوس | Origin Steakhouse</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-obsidian: #0d0c0b;
+            --bg-velvet: #161412;
+            --bg-ivory: #f3efe6;
+            --accent-brass: #c89b54;
+            --accent-brass-bright: #dfc088;
+            --accent-burgundy: #5e2129;
+            --whatsapp-green: #25D366;
+            --whatsapp-hover: #20ba5a;
+            --text-ivory: #f5f1e8;
+            --text-muted: #a69d91;
+            --text-dark: #171513;
+            --border-brass: rgba(200, 155, 84, 0.25);
+            --border-subtle: rgba(245, 241, 232, 0.08);
+            --smooth-ease: cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-obsidian);
+            color: var(--text-ivory);
+            font-family: 'Tajawal', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.75;
+        }
+
+        h1, h2, h3, .serif-heading {
+            font-family: 'Amiri', serif;
+            font-weight: 700;
+        }
+
+        /* --- الشريط العلوي (Navbar) --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: background-color 0.4s ease, padding 0.4s ease, border-color 0.4s ease;
+        }
+
+        header.scrolled {
+            background-color: rgba(13, 12, 11, 0.94);
+            backdrop-filter: blur(12px);
+            padding: 14px 6%;
+            border-bottom: 1px solid var(--border-brass);
+        }
+
+        .brand {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .brand-name {
+            font-family: 'Amiri', serif;
+            font-size: 1.9rem;
+            color: var(--text-ivory);
+            line-height: 1;
+        }
+
+        .brand-sub {
+            font-size: 0.72rem;
+            letter-spacing: 3.5px;
+            color: var(--accent-brass);
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        nav a {
+            color: var(--text-ivory);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 4px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-brass-bright);
+        }
+
+        /* --- أزرار الموقع الواقعية (بدون أي علامات غريبة) --- */
+        .btn-action {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 28px;
+            background-color: var(--accent-brass);
+            color: #12100e;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(200, 155, 84, 0.2);
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .btn-action:hover {
+            background-color: var(--accent-brass-bright);
+            transform: translateY(-1px);
+        }
+
+        .btn-action:active {
+            transform: translateY(1px);
+        }
+
+        /* زر واتساب الواقعي بايقونة رسمية */
+        .btn-whatsapp {
+            background-color: var(--whatsapp-green);
+            color: #ffffff;
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.28);
+        }
+
+        .btn-whatsapp:hover {
+            background-color: var(--whatsapp-hover);
+        }
+
+        .btn-whatsapp svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 26px;
+            background: transparent;
+            color: var(--text-ivory);
+            font-family: 'Tajawal', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: 1px solid rgba(245, 241, 232, 0.25);
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent-brass);
+            color: var(--accent-brass);
+            background-color: rgba(200, 155, 84, 0.05);
+        }
+
+        .view-hidden {
+            display: none !important;
+        }
+
+        /* --- القسم الرئيسي (Hero) --- */
+        .hero {
+            min-height: 100vh;
+            padding: 140px 7% 80px;
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            align-items: center;
+            gap: 50px;
+            position: relative;
+            background: linear-gradient(to bottom, rgba(13, 12, 11, 0.72), rgba(13, 12, 11, 0.96)),
+                        url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1600&q=85') center/cover no-repeat;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .hero-info {
+            opacity: 0;
+            transform: translateY(28px);
+            animation: heroFadeIn 1s var(--smooth-ease) forwards 0.15s;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.8rem, 5.2vw, 4.7rem);
+            line-height: 1.12;
+            margin-bottom: 22px;
+            color: var(--text-ivory);
+            text-shadow: 0 6px 24px rgba(0, 0, 0, 0.6);
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin-bottom: 36px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* --- الطبق الواقعي --- */
+        .hero-stage {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            opacity: 0;
+            transform: scale(0.86) rotate(-8deg);
+            animation: platePopIn 1.15s var(--smooth-ease) forwards 0.35s;
+        }
+
+        .realistic-plate {
+            width: clamp(280px, 35vw, 430px);
+            height: clamp(280px, 35vw, 430px);
+            border-radius: 50%;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 
+                0 35px 65px -10px rgba(0, 0, 0, 0.95),
+                0 15px 25px -5px rgba(0, 0, 0, 0.75),
+                inset 0 2px 6px rgba(255, 255, 255, 0.25),
+                inset 0 -10px 20px rgba(0, 0, 0, 0.8);
+            background: #1a1714;
+            padding: 8px;
+            border: 1px solid rgba(200, 155, 84, 0.2);
+            transition: border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .realistic-plate:hover {
+            border-color: rgba(200, 155, 84, 0.6);
+            box-shadow: 0 40px 75px -10px rgba(0, 0, 0, 1), 0 0 30px rgba(200, 155, 84, 0.15);
+        }
+
+        .realistic-plate img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+            will-change: transform;
+            transition: transform 0.12s linear;
+        }
+
+        @keyframes heroFadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes platePopIn {
+            to { opacity: 1; transform: scale(1) rotate(0deg); }
+        }
+
+        /* --- قسم قصة المطعم --- */
+        .about-band {
+            background-color: var(--bg-ivory);
+            color: var(--text-dark);
+            padding: 95px 7%;
+        }
+
+        .about-grid {
+            max-width: 1140px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .about-photo {
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 22px 45px rgba(23, 21, 19, 0.18);
+        }
+
+        .about-photo img {
+            width: 100%;
+            height: 390px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .about-text span {
+            color: var(--accent-burgundy);
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .about-text h2 {
+            font-size: clamp(2.1rem, 3.6vw, 3rem);
+            line-height: 1.2;
+            margin-bottom: 18px;
+            color: var(--text-dark);
+        }
+
+        .about-text p {
+            color: #46403a;
+            font-size: 1.04rem;
+            margin-bottom: 24px;
+        }
+
+        .about-highlights {
+            display: flex;
+            gap: 35px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(23, 21, 19, 0.12);
+        }
+
+        .highlight-item strong {
+            display: block;
+            font-family: 'Amiri', serif;
+            font-size: 1.85rem;
+            color: var(--accent-burgundy);
+            line-height: 1.1;
+        }
+
+        .highlight-item span {
+            color: #5c554e;
+            font-size: 0.88rem;
+            font-weight: 500;
+        }
+
+        /* --- قسم قائمة الطعام --- */
+        .menu-section {
+            padding: 100px 7% 120px;
+            max-width: 1240px;
+            margin: 0 auto;
+        }
+
+        .menu-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 85px;
+            gap: 30px;
+            flex-wrap: wrap;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 30px;
+        }
+
+        .menu-top span {
+            color: var(--accent-brass);
+            font-size: 0.95rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .menu-top h2 {
+            font-size: clamp(2.3rem, 4vw, 3.3rem);
+            line-height: 1.1;
+        }
+
+        .menu-top p {
+            color: var(--text-muted);
+            max-width: 440px;
+            font-size: 0.98rem;
+        }
+
+        .dishes-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 105px;
+        }
+
+        .dish-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 65px;
+            opacity: 0;
+            transform: translateY(45px);
+            transition: opacity 0.85s var(--smooth-ease), transform 0.85s var(--smooth-ease);
+        }
+
+        .dish-row.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .dish-row:nth-child(even) .plate-stage {
+            order: 2;
+        }
+
+        .dish-row:nth-child(even) .dish-copy {
+            order: 1;
+            text-align: left;
+            align-items: flex-end;
+        }
+
+        .dish-copy {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .dish-cat {
+            color: var(--accent-brass);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+
+        .dish-copy h3 {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: color 0.25s ease;
+        }
+
+        .dish-copy h3:hover {
+            color: var(--accent-brass-bright);
+        }
+
+        .dish-copy p {
+            color: var(--text-muted);
+            max-width: 420px;
+            margin-bottom: 24px;
+            font-size: 1rem;
+        }
+
+        .dish-footer-row {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .dish-price {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-brass-bright);
+        }
+
+        /* --- صفحة تفاصيل الأكلة المستقلة --- */
+        #dish-detail-view {
+            padding: 120px 7% 90px;
+            min-height: 90vh;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .back-nav {
+            margin-bottom: 30px;
+        }
+
+        .detail-card {
+            background-color: var(--bg-velvet);
+            border: 1px solid var(--border-brass);
+            border-radius: 20px;
+            padding: 50px 40px;
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
+        }
+
+        .detail-plate-center {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 32px;
+        }
+
+        .detail-plate-center .realistic-plate {
+            width: clamp(240px, 30vw, 340px);
+            height: clamp(240px, 30vw, 340px);
+        }
+
+        .detail-cat {
+            color: var(--accent-brass);
+            font-size: 0.95rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .detail-name {
+            font-size: clamp(2.1rem, 3.8vw, 3rem);
+            margin-bottom: 16px;
+        }
+
+        .detail-story {
+            color: #d4cdc3;
+            max-width: 620px;
+            margin: 0 auto 30px;
+            font-size: 1.06rem;
+        }
+
+        /* خيارات درجة تسوية الستيك */
+        .cooking-level-section {
+            max-width: 640px;
+            margin: 0 auto 25px;
+            text-align: right;
+        }
+
+        .cooking-level-section label {
+            display: block;
+            color: var(--accent-brass-bright);
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .cooking-options {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .cook-btn {
+            background: var(--bg-obsidian);
+            border: 1px solid rgba(200, 155, 84, 0.2);
+            color: var(--text-muted);
+            padding: 10px 8px;
+            border-radius: 8px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .cook-btn.active, .cook-btn:hover {
+            background: var(--accent-brass);
+            color: #12100e;
+            border-color: var(--accent-brass);
+            font-weight: 700;
+        }
+
+        .specs-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            max-width: 640px;
+            margin: 0 auto 25px;
+        }
+
+        .spec-card {
+            background-color: var(--bg-obsidian);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 14px;
+        }
+
+        .spec-card small {
+            display: block;
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            margin-bottom: 3px;
+        }
+
+        .spec-card span {
+            font-weight: 700;
+            color: var(--text-ivory);
+            font-size: 0.98rem;
+        }
+
+        .ingredients-line {
+            max-width: 640px;
+            margin: 0 auto 28px;
+            padding: 15px 20px;
+            background-color: rgba(200, 155, 84, 0.08);
+            border: 1px solid rgba(200, 155, 84, 0.2);
+            border-radius: 10px;
+            color: var(--accent-brass-bright);
+            font-size: 0.95rem;
+        }
+
+        .detail-price-wrap {
+            margin-bottom: 24px;
+        }
+
+        .detail-price-wrap small {
+            display: block;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+        }
+
+        .detail-price-wrap strong {
+            font-family: 'Amiri', serif;
+            font-size: 2.7rem;
+            color: var(--accent-brass-bright);
+        }
+
+        /* --- التذييل (Footer) --- */
+        footer {
+            background-color: #080706;
+            border-top: 1px solid var(--border-subtle);
+            padding: 75px 7% 30px;
+            color: var(--text-muted);
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr 1.1fr;
+            gap: 40px;
+            padding-bottom: 50px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .footer-col h4 {
+            color: var(--text-ivory);
+            font-family: 'Amiri', serif;
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+        }
+
+        .footer-col p {
+            font-size: 0.94rem;
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.94rem;
+            transition: color 0.25s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-brass);
+        }
+
+        .contact-list {
+            list-style: none;
+            font-size: 0.94rem;
+        }
+
+        .contact-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .contact-list strong {
+            color: var(--text-ivory);
+            font-weight: 500;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 24px auto 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-size: 0.86rem;
+        }
+
+        /* --- نافذة إتمام الطلب وتوجيه واتساب --- */
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(8, 7, 6, 0.88);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-backdrop.open {
+            display: flex;
+        }
+
+        .modal-card {
+            background-color: var(--bg-velvet);
+            border: 1px solid var(--border-brass);
+            border-radius: 18px;
+            padding: 34px 28px;
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .modal-card h3 {
+            font-size: 1.9rem;
+            margin-bottom: 6px;
+            color: var(--accent-brass-bright);
+        }
+
+        .modal-card p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            margin-bottom: 20px;
+        }
+
+        .qty-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 18px;
+        }
+
+        .qty-circle {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1px solid var(--border-brass);
+            background: var(--bg-obsidian);
+            color: var(--text-ivory);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .qty-circle:hover {
+            background: var(--accent-brass);
+            color: #12100e;
+        }
+
+        .field-input {
+            width: 100%;
+            padding: 12px 16px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(245, 241, 232, 0.14);
+            background-color: var(--bg-obsidian);
+            color: var(--text-ivory);
+            font-family: 'Tajawal', sans-serif;
+            outline: none;
+        }
+
+        .field-input:focus {
+            border-color: var(--accent-brass);
+        }
+
+        /* --- التجاوب مع الأجهزة --- */
+        @media (max-width: 920px) {
+            nav ul { display: none; }
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding-top: 130px;
+                gap: 40px;
+            }
+            .hero p { margin: 0 auto 28px; }
+            .hero-btns { justify-content: center; }
+            .about-grid { grid-template-columns: 1fr; gap: 35px; }
+            .about-photo img { height: 280px; }
+            .dish-row {
+                grid-template-columns: 1fr;
+                gap: 28px;
+                text-align: center;
+            }
+            .dish-row:nth-child(even) .plate-stage { order: 1; }
+            .dish-row:nth-child(even) .dish-copy {
+                order: 2;
+                text-align: center;
+                align-items: center;
+            }
+            .dish-copy { align-items: center; }
+            .specs-row { grid-template-columns: 1fr; }
+            .detail-card { padding: 32px 20px; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .cooking-options { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 560px) {
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر -->
+    <header id="mainHeader">
+        <a class="brand" onclick="showHome()">
+            <span class="brand-name">أوريجين</span>
+            <span class="brand-sub">Steak & Grill</span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#top" onclick="showHome()">الرئيسية</a></li>
+                <li><a href="#about" onclick="showHome()">عن المطعم</a></li>
+                <li><a href="#menu" onclick="showHome()">قائمة الطعام</a></li>
+                <li><a href="#contact">تواصل معنا</a></li>
+            </ul>
+        </nav>
+        <a href="#menu" class="btn-action" onclick="showHome()">اطلب الآن</a>
+    </header>
+
+    <!-- الرئيسية -->
+    <div id="home-view">
+        <section class="hero" id="top">
+            <div class="hero-info">
+                <h1>نكهة الشواء الحقيقي على الحطب الطبيعي</h1>
+                <p>نختار أجود قطع اللحم الطازجة والمعتقة بعناية، ونحضرها يومياً لتستمتع بوجبة تجمع بين الجودة العالية والأجواء الدافئة.</p>
+                <div class="hero-btns">
+                    <a href="#menu" class="btn-action">استكشف القائمة</a>
+                    <a href="#about" class="btn-outline">قصة المطعم</a>
+                </div>
+            </div>
+
+            <div class="hero-stage">
+                <div class="realistic-plate" onclick="openDish(1)">
+                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=85" alt="طبق ريب آي ستيك" class="scroll-spin-plate" data-dir="1">
+                </div>
+            </div>
+        </section>
+
+        <!-- عن المطعم -->
+        <section class="about-band" id="about">
+            <div class="about-grid">
+                <div class="about-photo">
+                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=900&q=85" alt="مطبخ أوريجين">
+                </div>
+                <div class="about-text">
+                    <span>حكاية مطبخنا</span>
+                    <h2>شغف التفاصيل من اختيار القطعة وحتى التقديم</h2>
+                    <p>في مطعم أوريجين نؤمن أن الطعام الرائع يبدأ من المكونات الصادقة. نعتمد على لحوم معتقة بعناية، ونشويها على فحم طبيعي يمنح كل طبق مذاقاً غنياً وقواماً طرياً يرضي ذائقتك.</p>
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <strong>+12</strong>
+                            <span>عاماً من الخبرة</span>
+                        </div>
+                        <div class="highlight-item">
+                            <strong>100%</strong>
+                            <span>لحوم طازجة يومياً</span>
+                        </div>
+                        <div class="highlight-item">
+                            <strong>4.9</strong>
+                            <span>تقييم زوارنا</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- القائمة -->
+        <section class="menu-section" id="menu">
+            <div class="menu-top">
+                <div>
+                    <span>تشكيلة مختارة</span>
+                    <h2>قائمة الأطباق</h2>
+                </div>
+                <p>اضغط على أي طبق لمشاهدة تفاصيل المكونات والسعرات والطلب المباشر.</p>
+            </div>
+            <div class="dishes-wrapper" id="dishesContainer"></div>
+        </section>
+    </div>
+
+    <!-- صفحة تفاصيل الأكلة -->
+    <section id="dish-detail-view" class="view-hidden">
+        <div class="back-nav">
+            <button class="btn-outline" onclick="showHome()">→ العودة للقائمة الرئيسية</button>
+        </div>
+
+        <div class="detail-card">
+            <div class="detail-plate-center">
+                <div class="realistic-plate">
+                    <img id="d-img" src="" alt="صورة الطبق" class="scroll-spin-plate" data-dir="1">
+                </div>
+            </div>
+
+            <span class="detail-cat" id="d-cat"></span>
+            <h1 class="detail-name" id="d-title"></h1>
+            <p class="detail-story" id="d-story"></p>
+
+            <!-- درجة التسوية -->
+            <div class="cooking-level-section" id="cookingSection">
+                <label>اختر درجة تسوية الستيك:</label>
+                <div class="cooking-options">
+                    <button class="cook-btn" onclick="setCooking('Rare')">Rare (نصف ناضج)</button>
+                    <button class="cook-btn active" onclick="setCooking('Medium')">Medium (متوسط)</button>
+                    <button class="cook-btn" onclick="setCooking('Medium Well')">Medium Well</button>
+                    <button class="cook-btn" onclick="setCooking('Well Done')">Well Done (ناضج كلياً)</button>
+                </div>
+            </div>
+
+            <div class="specs-row">
+                <div class="spec-card">
+                    <small>وقت التحضير</small>
+                    <span id="d-time"></span>
+                </div>
+                <div class="spec-card">
+                    <small>السعرات الحرارية</small>
+                    <span id="d-cal"></span>
+                </div>
+                <div class="spec-card">
+                    <small>طريقة الطهي</small>
+                    <span id="d-cook"></span>
+                </div>
+            </div>
+
+            <div class="ingredients-line" id="d-ing"></div>
+
+            <div class="detail-price-wrap">
+                <small>السعر النهائي</small>
+                <strong id="d-price"></strong>
+            </div>
+
+            <!-- زر الطلب عبر واتساب بأيقونة رسمية -->
+            <button class="btn-action btn-whatsapp" style="padding: 15px 42px; font-size: 1.05rem;" onclick="openModal()">
+                <svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.183 0-5.767 2.584-5.767 5.767 0 1.015.267 1.968.734 2.793l-.782 2.859 2.937-.771c.78.435 1.688.683 2.658.683 3.183 0 5.767-2.584 5.767-5.767 0-3.183-2.584-5.767-5.767-5.767zm3.364 8.256c-.144.407-.833.755-1.156.797-.305.041-.692.059-1.117-.078-.261-.084-.595-.213-1.026-.402-1.802-.782-2.981-2.607-3.072-2.729-.091-.122-.733-.975-.733-1.859 0-.884.457-1.319.62-1.498.163-.179.355-.224.474-.224.119 0 .238.001.342.006.111.005.261-.042.408.311.149.356.508 1.239.553 1.33.045.091.075.197.015.318-.06.121-.09.197-.18.303-.09.106-.189.237-.27.318-.09.091-.184.19-.08.371.104.181.462.763.992 1.235.682.608 1.256.797 1.437.888.181.091.286.076.391-.045.105-.121.452-.528.573-.709.121-.181.242-.151.408-.091.166.06 1.056.498 1.237.589.181.091.302.136.347.211.045.075.045.438-.099.845z"/></svg>
+                اطلب عبر واتساب
+            </button>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer id="contact">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="brand" style="margin-bottom: 14px;">
+                    <span class="brand-name">أوريجين</span>
+                    <span class="brand-sub">Steak & Grill</span>
+                </div>
+                <p>نقدم تجربة طعام أصيلة لعشاق الستيك والمشويات في أجواء مريحة تناسب العائلات والأصدقاء.</p>
+            </div>
+            <div class="footer-col">
+                <h4>روابط سريعة</h4>
+                <ul class="footer-links">
+                    <li><a href="#top" onclick="showHome()">الرئيسية</a></li>
+                    <li><a href="#about" onclick="showHome()">عن المطعم</a></li>
+                    <li><a href="#menu" onclick="showHome()">قائمة الطعام</a></li>
+                    <li><a href="#contact">تواصل معنا</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>مواعيد العمل</h4>
+                <ul class="contact-list">
+                    <li><div><strong>السبت - الأربعاء:</strong><br>1:00 ظهراً – 12:30 منتصف الليل</div></li>
+                    <li><div><strong>الخميس والجمعة:</strong><br>1:00 ظهراً – 2:00 صباحاً</div></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>العنوان والحجز</h4>
+                <ul class="contact-list">
+                    <li><div><strong>العنوان:</strong> القاهرة الجديدة، شارع التسعين الشمالي</div></li>
+                    <li><div><strong>الهاتف:</strong> 0100 123 4567</div></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 مطعم أوريجين ستيك هاوس. جميع الحقوق محفوظة.</span>
+        </div>
+    </footer>
+
+    <!-- نافذة إتمام الطلب -->
+    <div class="modal-backdrop" id="orderModal">
+        <div class="modal-card">
+            <h3 id="m-title">إتمام الطلب</h3>
+            <p>أدخل بياناتك لتوجيه الطلب مباشرة عبر واتساب للمطعم</p>
+
+            <div class="qty-bar">
+                <button class="qty-circle" onclick="updateQty(-1)">-</button>
+                <span id="m-qty" style="font-size: 1.3rem; font-weight: 700;">1</span>
+                <button class="qty-circle" onclick="updateQty(1)">+</button>
+            </div>
+
+            <div style="margin-bottom: 18px; color: var(--accent-brass-bright); font-weight: 700;">
+                الإجمالي: <span id="m-total">0</span> ج.م
+            </div>
+
+            <form onsubmit="sendToWhatsApp(event)">
+                <input type="text" id="custName" class="field-input" placeholder="الاسم بالكامل" required>
+                <input type="tel" id="custPhone" class="field-input" placeholder="رقم الموبايل" required>
+                <input type="text" id="custAddress" class="field-input" placeholder="العنوان بالتفصيل" required>
+                <div style="display: flex; gap: 10px; margin-top: 8px;">
+                    <button type="submit" class="btn-action btn-whatsapp" style="flex: 1; justify-content: center;">
+                        <svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.183 0-5.767 2.584-5.767 5.767 0 1.015.267 1.968.734 2.793l-.782 2.859 2.937-.771c.78.435 1.688.683 2.658.683 3.183 0 5.767-2.584 5.767-5.767 0-3.183-2.584-5.767-5.767-5.767zm3.364 8.256c-.144.407-.833.755-1.156.797-.305.041-.692.059-1.117-.078-.261-.084-.595-.213-1.026-.402-1.802-.782-2.981-2.607-3.072-2.729-.091-.122-.733-.975-.733-1.859 0-.884.457-1.319.62-1.498.163-.179.355-.224.474-.224.119 0 .238.001.342.006.111.005.261-.042.408.311.149.356.508 1.239.553 1.33.045.091.075.197.015.318-.06.121-.09.197-.18.303-.09.106-.189.237-.27.318-.09.091-.184.19-.08.371.104.181.462.763.992 1.235.682.608 1.256.797 1.437.888.181.091.286.076.391-.045.105-.121.452-.528.573-.709.121-.181.242-.151.408-.091.166.06 1.056.498 1.237.589.181.091.302.136.347.211.045.075.045.438-.099.845z"/></svg>
+                        إرسال الطلب
+                    </button>
+                    <button type="button" class="btn-outline" onclick="closeModal()">إلغاء</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const menuItems = [
+            {
+                id: 0,
+                category: "المقبلات • Appetizers",
+                title: "سلطة الأفوكادو والأعشاب الطازجة",
+                short: "شرائح أفوكادو طازجة مع أوراق الجرجير وزيت الزيتون البكر والخبز المحمص.",
+                story: "توليفة طازجة وخفيفة تُحضر فور طلبك؛ شرائح من الأفوكادو الناضج مع أوراق الجرجير البري والطماطم الكرزية، متبلة بزيت الزيتون وعصير الليمون.",
+                price: 95,
+                time: "10 دقائق",
+                cal: "310 سعرة",
+                cook: "طازج",
+                ing: "المكونات: أفوكادو طازج، جرجير، طماطم كرزية، زيت زيتون بكر، خبز محمص.",
+                hasCooking: false,
+                img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=900&q=85"
+            },
+            {
+                id: 1,
+                category: "الأطباق الرئيسية • Steaks",
+                title: "ريب آي ستيك مشوي على الفحم",
+                short: "قطعة ريب آي معتقة 28 يوماً مشوية على الحطب مع الثوم المشوي وإكليل الجبل.",
+                story: "الاختيار الأول لعشاق الستيك الحقيقي؛ قطعة ريب آي غنية بالعصارة ومعتقة بعناية، تُشوى على اللهب المباشر مع زبدة الأعشاب وفصوص الثوم المشوي.",
+                price: 360,
+                time: "20 دقيقة",
+                cal: "760 سعرة",
+                cook: "حسب اختيارك",
+                ing: "المكونات: 350 جم ريب آي بقري، زبدة أعشاب، إكليل الجبل، ثوم مشوي، صوص الفلفل.",
+                hasCooking: true,
+                img: "https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=900&q=85"
+            },
+            {
+                id: 2,
+                category: "أطباق جانبية • Sides",
+                title: "خضروات موسمية مشوية بالليمون",
+                short: "تشكيلة خضروات طازجة مشوية على اللهب بتتبيلة الأعشاب الإيطالية.",
+                story: "طبق جانبي متوازن يكمل وجبتك؛ خضروات موسمية مقطعة طازجة ومشوية سريعاً للحفاظ على نكهتها الطبيعية وقرمشتها.",
+                price: 110,
+                time: "12 دقيقة",
+                cal: "230 سعرة",
+                cook: "مشوي",
+                ing: "المكونات: بروكلي، جزر، كوسة، فلفل ألوان، زيت زيتون، أعشاب طبيعية.",
+                hasCooking: false,
+                img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=85"
+            },
+            {
+                id: 3,
+                category: "الحلويات • Desserts",
+                title: "تارت التفاح المكرمل بالقرفة",
+                short: "عجينة مخبوزة طازجة محشوة بشرائح التفاح الدافئ والكراميل.",
+                story: "ختام مثالي لوجبتك؛ طبقات هشة من العجين المخبوز في مطبخنا مع شرائح التفاح المكرمل بالقرفة السيلانية ورشة سكر.",
+                price: 125,
+                time: "15 دقيقة",
+                cal: "440 سعرة",
+                cook: "مخبوز طازجاً",
+                ing: "المكونات: تفاح طازج، قرفة، كراميل، زبدة طبيعية، عجين هش.",
+                hasCooking: false,
+                img: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=900&q=85"
+            }
+        ];
+
+        let selectedDish = menuItems[1];
+        let orderQty = 1;
+        let selectedCooking = 'Medium';
+
+        const container = document.getElementById('dishesContainer');
+        menuItems.forEach((item, idx) => {
+            const dir = idx % 2 === 0 ? 1 : -1;
+            container.insertAdjacentHTML('beforeend', `
+                <article class="dish-row reveal-row">
+                    <div class="plate-stage">
+                        <div class="realistic-plate" onclick="openDish(${item.id})">
+                            <img src="${item.img}" alt="${item.title}" class="scroll-spin-plate" data-dir="${dir}">
+                        </div>
+                    </div>
+                    <div class="dish-copy">
+                        <span class="dish-cat">${item.category}</span>
+                        <h3 onclick="openDish(${item.id})">${item.title}</h3>
+                        <p>${item.short}</p>
+                        <div class="dish-footer-row">
+                            <span class="dish-price">${item.price} ج.م</span>
+                            <button class="btn-action" onclick="openDish(${item.id})">تفاصيل الوجبة</button>
+                        </div>
+                    </div>
+                </article>
+            `);
+        });
+
+        const rowObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.18 });
+
+        document.querySelectorAll('.reveal-row').forEach(row => rowObserver.observe(row));
+
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            document.getElementById('mainHeader').classList.toggle('scrolled', scrollY > 40);
+
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    document.querySelectorAll('.scroll-spin-plate').forEach(plate => {
+                        const dir = Number(plate.dataset.dir) || 1;
+                        plate.style.transform = `rotate(${scrollY * 0.08 * dir}deg)`;
+                    });
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        function openDish(id) {
+            selectedDish = menuItems.find(m => m.id === id);
+            if (!selectedDish) return;
+
+            document.getElementById('d-img').src = selectedDish.img;
+            document.getElementById('d-cat').textContent = selectedDish.category;
+            document.getElementById('d-title').textContent = selectedDish.title;
+            document.getElementById('d-story').textContent = selectedDish.story;
+            document.getElementById('d-time').textContent = selectedDish.time;
+            document.getElementById('d-cal').textContent = selectedDish.cal;
+            document.getElementById('d-cook').textContent = selectedDish.cook;
+            document.getElementById('d-ing').textContent = selectedDish.ing;
+            document.getElementById('d-price').textContent = selectedDish.price + ' ج.م';
+
+            const cookSec = document.getElementById('cookingSection');
+            cookSec.style.display = selectedDish.hasCooking ? 'block' : 'none';
+
+            document.getElementById('home-view').classList.add('view-hidden');
+            document.getElementById('dish-detail-view').classList.remove('view-hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showHome() {
+            document.getElementById('dish-detail-view').classList.add('view-hidden');
+            document.getElementById('home-view').classList.remove('view-hidden');
+        }
+
+        function setCooking(level) {
+            selectedCooking = level;
+            document.querySelectorAll('.cook-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.textContent.includes(level));
+            });
+        }
+
+        function openModal() {
+            orderQty = 1;
+            document.getElementById('m-title').textContent = selectedDish.title;
+            refreshTotal();
+            document.getElementById('orderModal').classList.add('open');
+        }
+
+        function closeModal() {
+            document.getElementById('orderModal').classList.remove('open');
+        }
+
+        function updateQty(val) {
+            orderQty = Math.max(1, orderQty + val);
+            refreshTotal();
+        }
+
+        function refreshTotal() {
+            document.getElementById('m-qty').textContent = orderQty;
+            document.getElementById('m-total').textContent = orderQty * selectedDish.price;
+        }
+
+        function sendToWhatsApp(e) {
+            e.preventDefault();
+            const name = document.getElementById('custName').value;
+            const phone = document.getElementById('custPhone').value;
+            const address = document.getElementById('custAddress').value;
+            const total = orderQty * selectedDish.price;
+
+            let msg = `🍽️ *طلب جديد من موقع أوريجين ستيك هاوس*%0A\n`;
+            msg += `👤 *الاسم:* ${name}%0A`;
+            msg += `📞 *الهاتف:* ${phone}%0A`;
+            msg += `📍 *العنوان:* ${address}%0A\n`;
+            msg += `🥩 *الطلب:* ${selectedDish.title}%0A`;
+            if (selectedDish.hasCooking) {
+                msg += `🔥 *درجة التسوية:* ${selectedCooking}%0A`;
+            }
+            msg += `🔢 *الكمية:* ${orderQty}%0A`;
+            msg += `💰 *الإجمالي:* ${total} ج.م`;
+
+            const restaurantWhatsApp = "201001234567";
+            window.open(`https://wa.me/${restaurantWhatsApp}?text=${msg}`, '_blank');
+            closeModal();
+        }
+    </script>
+</body>
+</html>
